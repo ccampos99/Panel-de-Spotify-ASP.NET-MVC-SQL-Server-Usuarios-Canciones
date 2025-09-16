@@ -1,0 +1,62 @@
+﻿@model SpotifyEFSRT.Models.ContentManagement
+
+<!-- Carga de SweetAlert2 desde un CDN alternativo -->
+<script src="https://unpkg.com/sweetalert2@11"></script>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ContentManagement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.ContentId)</dt>
+        <dd>@Html.DisplayFor(model => model.ContentId)</dd>
+        <dt>@Html.DisplayNameFor(model => model.ContentType)</dt>
+        <dd>@Html.DisplayFor(model => model.ContentType)</dd>
+        <dt>@Html.DisplayNameFor(model => model.ContentIdRef)</dt>
+        <dd>@Html.DisplayFor(model => model.ContentIdRef)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Action)</dt>
+        <dd>@Html.DisplayFor(model => model.Action)</dd>
+        <dt>@Html.DisplayNameFor(model => model.ActionDate)</dt>
+        <dd>@Html.DisplayFor(model => model.ActionDate)</dd>
+        <dt>@Html.DisplayNameFor(model => model.UserId)</dt>
+        <dd>@Html.DisplayFor(model => model.UserId)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="button" value="Delete" class="btn btn-default" onclick="confirmDelete();" /> |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary btn-lg" })
+        </div>
+    }
+</div>
+
+<script>
+    console.log("JavaScript is loaded");
+    console.log("SweetAlert2 is", Swal ? "available" : "not available");
+
+    function confirmDelete() {
+        console.log("confirmDelete triggered"); // Debugging
+
+        Swal.fire({
+            title: "Seguro que deseas eliminar este contenido?",
+            text: "No podrás revertir esto!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, elimínalo!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Enviar el formulario después de la confirmación
+                const form = document.querySelector('form'); // Selecciona el primer formulario en la página
+                if (form) {
+                    form.submit(); // Enviar el formulario
+                } else {
+                    console.error("No se encontró el formulario.");
+                }
+            }
+        });
+    }
+</script>

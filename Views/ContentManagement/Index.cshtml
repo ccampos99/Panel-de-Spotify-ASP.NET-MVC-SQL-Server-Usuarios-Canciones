@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SpotifyEFSRT.Models.ContentManagement>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="~/Content/Site.css" />
+@{
+    ViewBag.Title = "Gestión de Contenido"; // Título de la página
+}
+
+
+<h2>@ViewBag.Title</h2>
+<p>
+    @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-outline-primary" })
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentIdRef)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentIdRef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ContentId }, new { @class = "btn btn-outline-success" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ContentId }, new { @class = "btn btn-outline-warning" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ContentId }, new { @class = "btn btn-outline-danger", onclick = $"return eliminar({item.ContentId});" })
+            </td>
+        </tr>
+    }
+</table>
+
+
+<script>
+    function eliminar(contentId) {
+        return confirm("¿Desea eliminar el contenido con ID " + contentId + "?");
+    }
+</script>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi Reproductor de Música</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color: #e3f2fd ">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #000000;">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/Content/Img/SpotifyLogo.png" alt="Logo" style="height:40px;">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link text-white " })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Explorar", "Explore", "Music", new { area = "" }, new { @class = "nav-link text-white " })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Mis Listas", "Playlists", "Music", new { area = "" }, new { @class = "nav-link text-white " })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Mi Música", "MyMusic", "Music", new { area = "" }, new { @class = "nav-link text-white " })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi Reproductor de Música - Derechos reservados CIBERTEC</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

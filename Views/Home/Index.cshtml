@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main class="container">
+    <section class="row text-center py-5">
+        <div class="col">
+            <h1>Panel de Administración</h1>
+            <p class="lead">Gestiona el contenido de canciones de manera eficiente.</p>
+        </div>
+    </section>
+
+    <div class="row">
+        <section class="col-md-4 text-center">
+            <h2>Consultar Contenido</h2>
+            <p>Revisa y organiza el contenido disponible en el sistema.</p>
+            <a href="@Url.Action("Index", "ContentManagement")" class="btn btn-outline-dark">Ver Contenido &raquo;</a>
+        </section>
+        <section class="col-md-4 text-center">
+            <h2>Crear Nuevo Contenido</h2>
+            <p>Añade nuevas canciones o elementos al contenido existente.</p>
+            <a href="@Url.Action("Create", "ContentManagement")" class="btn btn-outline-dark">Añadir Contenido &raquo;</a>
+        </section>
+        <section class="col-md-4 text-center">
+            <h2>Información Importante</h2>
+            <p>Actualmente, estamos trabajando en completar las vistas faltantes. Se logró implementar un CRUD con la lógica básica, pero algunos aspectos de las vistas están en proceso de desarrollo.</p>
+            <p>Tuvimos un compañero, que le tocaba hacer las vista de los controllers, pero se retiro y nos dejo sin su parte. Sin embargo pudimos hacer un crud con sus vistas, los demas tienen logica.</p>
+        </section>
+    </div>
+</main>
